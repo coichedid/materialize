@@ -1,8 +1,3 @@
-/*!
- * Materialize vundefined (http://materializecss.com)
- * Copyright 2014-2015 Materialize
- * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
- */
 // Check for jQuery.
 if (typeof(jQuery) === 'undefined') {
   var jQuery;
@@ -1368,7 +1363,7 @@ if (jQuery) {
         onShow: null,
         swipeable: false,
         responsiveThreshold: Infinity, // breakpoint for swipeable
-        withScrollSpy:false, //Option to be able to integrate with ScrollSpy plugin
+        withScrollSpy:false,
       };
       options = $.extend(defaults, options);
 

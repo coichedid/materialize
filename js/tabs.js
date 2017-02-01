@@ -6,6 +6,7 @@
         onShow: null,
         swipeable: false,
         responsiveThreshold: Infinity, // breakpoint for swipeable
+        withScrollSpy:false, //Option to be able to integrate with ScrollSpy plugin
       };
       options = $.extend(defaults, options);
 
@@ -185,8 +186,10 @@
           }
         } else {
           if ($content !== undefined) {
-            $content.show();
-            $content.addClass('active');
+            if (!options.withScrollSpy) {
+              $content.show();
+              $content.addClass('active');
+            }
             if (typeof(options.onShow) === "function") {
               options.onShow.call(this, $content);
             }
@@ -194,8 +197,10 @@
 
           if ($oldContent !== undefined &&
               !$oldContent.is($content)) {
-            $oldContent.hide();
-            $oldContent.removeClass('active');
+            if (!options.withScrollSpy) {
+              $oldContent.hide();
+              $oldContent.removeClass('active');
+            }
           }
         }
 
