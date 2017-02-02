@@ -9,7 +9,7 @@
         withScrollSpy:false, //Option to be able to integrate with ScrollSpy plugin
       };
       options = $.extend(defaults, options);
-
+      
       return this.each(function() {
 
       // For each set of tabs, we want to keep track of
@@ -136,10 +136,12 @@
           },
         });
       } else {
-        // Hide the remaining content
-        $links.not($active).each(function () {
-          $(Materialize.escapeHash(this.hash)).hide();
-        });
+        if (!options.withScrollSpy) {
+          // Hide the remaining content
+          $links.not($active).each(function () {
+            $(Materialize.escapeHash(this.hash)).hide();
+          });
+        }
       }
 
 
@@ -211,7 +213,9 @@
         animateIndicator(prev_index);
 
         // Prevent the anchor's default click action
-        e.preventDefault();
+        if (!options.withScrollSpy) {
+          e.preventDefault();
+        }
       });
     });
 
